@@ -1,0 +1,17 @@
+<mule xmlns="http://www.mulesoft.org/schema/mule/core"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:couchdb="http://www.mulesoft.org/schema/mule/couchdb"
+      xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+          http://www.mulesoft.org/schema/mule/couchdb http://www.mulesoft.org/schema/mule/couchdb/current/mule-couchdb.xsd">
+
+    <couchdb:config name="CouchDB_Config" configId="test-my-config" >
+        <couchdb:connection url="http://localhost:${http.port}" username="admin" password="password" />
+    </couchdb:config>
+
+
+    <flow name="getDatabase">
+        <couchdb:get-database databaseName="test" config-ref="CouchDB_Config"/>
+    </flow>
+
+
+</mule>
